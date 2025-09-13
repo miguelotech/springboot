@@ -2,6 +2,7 @@ package com.learning.springboot.controller;
 
 import com.learning.springboot.entity.Producto;
 import com.learning.springboot.repository.ProductoRepository;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +15,10 @@ public class ProductoController {
     @Autowired
     private ProductoRepository productoRepository;
 
-
+    @Operation(
+            summary = "obtener productos",
+            description = "veremos aqui los productos existentes de la base de datos"
+    )
     @GetMapping
     public List<Producto> getProductos() {
         return productoRepository.findAll();
